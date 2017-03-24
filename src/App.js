@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.svg';
 import './App.css';
-
-import { Grid, Col, Row } from 'react-bootstrap';
-
 import SearchSideBar from './components/SearchSideBar/SearchSideBar.jsx';
-
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={6} md={6}>
-              <SearchSideBar></SearchSideBar>            
-            </Col>
-            <Col xs={6} md={6}>
-            asldjlajksdkllaj</Col>
-          </Row>
-        </Grid>
-
-
+        <section className="row">
+          <section className="col-md-3 side-search-bar">
+            <SearchSideBar></SearchSideBar>        
+          </section>
+          <section className="col-md-9"></section>
+        </section>
+        
         <footer>
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
