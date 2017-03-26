@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from "axios";
+import axios from 'axios';
+import { connect } from 'react-redux';
+
+import { fetchUsers } from '../../redux/actions/usersActions'
 import './SearchSideBar.css';
 
 class SearchSideBar extends Component {
@@ -7,30 +10,30 @@ class SearchSideBar extends Component {
     super(props);
     this.state = {
       value: '',
-      searchData: [1,2,3,4,5]
+      searchData: []
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+    this.props.dispatch(fetchUsers("razat"))
+  }
+
   handleChange(event) {
     this.setState({value: event.target.value});
     const self = this;
-    // Make a request for a user with a given ID 
-    axios.get('https://api.github.com/search/users?q=' + this.state.value)
-      .then(function (response) {
-        console.log(response);
-        self.setState({searchData: response.data.items});
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
+    this.props.dispatch(fetchUsers(event.target.value))
+  }
 
   render() {
-    var namesList = this.state.searchData.map(function(user){
-                    return <li key={user.id} className="list-group-item">{user.login}</li>;
-                  })
+    if (this.props.users.items) {
+      var namesList = this.props.users.items.map(function(user){
+                      return <li key={user.id} className="list-group-item">{user.login}</li>;
+                    })
+    }
+
+    console.log(this.props);
     return (
       <div>
         <div>
@@ -48,4 +51,10 @@ class SearchSideBar extends Component {
   }
 }
 
-export default SearchSideBar;
+function mapStateToProps(state) {
+  return {
+    users: state.users.data
+  };
+}
+
+export default connect(mapStateToProps)(SearchSideBar);
