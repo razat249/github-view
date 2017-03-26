@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { fetchUsers } from '../../redux/actions/usersActions';
@@ -15,11 +14,6 @@ class SearchSideBar extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentWillMount() {
-    this.props.dispatch(fetchUsers("razat"))
-    this.props.dispatch(fetchUserRepos('razat249'))
   }
 
   handleChange(event) {
@@ -39,7 +33,6 @@ class SearchSideBar extends Component {
       })
     }
 
-    console.log(this.props);
     return (
       <div>
         <div>
@@ -60,7 +53,6 @@ class SearchSideBar extends Component {
 function mapStateToProps(state) {
   return {
     users: state.users,
-    repos: state.repos,
   };
 }
 
