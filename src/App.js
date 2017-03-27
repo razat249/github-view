@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.svg';
 import './App.css';
 import SearchSideBar from './components/SearchSideBar/SearchSideBar.jsx';
-import ReposList from './components/ReposList/ReposList.jsx';
+import UserDetailsContainer from './components/UserDetailsContainer/UserDetailsContainer.jsx';
 
 class App extends Component {
   render() {
@@ -14,7 +14,7 @@ class App extends Component {
             <SearchSideBar></SearchSideBar>        
           </section>
           <section className="col-md-9">
-            <ReposList></ReposList>
+            <UserDetailsContainer></UserDetailsContainer>
           </section>
         </section>
         
