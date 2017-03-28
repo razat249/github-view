@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Icon} from 'react-fa';
 
 import { fetchUsers } from '../../redux/actions/usersActions';
 import { fetchUserRepos } from '../../redux/actions/reposActions';
+import { fetchUserSummary, fetchUserEvents } from '../../redux/actions/singleUserActions';
 import './SearchSideBar.css';
 
 class SearchSideBar extends Component {
@@ -23,13 +25,14 @@ class SearchSideBar extends Component {
 
   handleClick(userName) {
     this.props.dispatch(fetchUserRepos(userName))
+    this.props.dispatch(fetchUserSummary(userName))
+    this.props.dispatch(fetchUserEvents(userName))    
   }
 
   render() {
     if (this.props.users.data.items) {
-      const self = this;
       var usersList = this.props.users.data.items.map(function(user){
-        return <a key={user.id} href="#" onClick={ e => self.handleClick(user.login) } className="list-group-item">{user.login}</a>;
+        return <option key={user.id} href="#" value={user.login} />;
       })
     }
 
@@ -37,13 +40,16 @@ class SearchSideBar extends Component {
       <div>
         <div>
           <h4>Search User</h4>
-          {this.state.value}
           <from className="form-group">
-            <input disabled={this.props.users.fetching} type="text" className="form-control" value={this.state.value} onChange={this.handleChange}/>
+            <input list="users" className="form-control" value={this.state.value} onChange={this.handleChange}/>
+            <datalist id="users">
+              {usersList}
+            </datalist>
+            <h5>
+              {this.props.users.fetching ? <span><Icon spin name="spinner" /> Loading...</span>: ""}
+            </h5>
+            <button className="btn btn-primary" onClick={ e => this.handleClick(this.state.value) }>Submit</button>
           </from>
-          <ul className="list-group">
-            {this.props.users.fetching ? <h5>Loading...</h5>: usersList}
-          </ul>
         </div>
       </div>
     );

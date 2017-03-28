@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Icon} from 'react-fa';
 
 class ReposList extends Component {
   constructor(props) {
@@ -18,9 +19,11 @@ class ReposList extends Component {
     return (
       <div>
         <div>
-          <ul className="list-group">
-            {reposList}
-          </ul>
+          <h4>Repositories</h4>
+          { this.props.repos.fetching ? <h5><Icon spin name="spinner" /> Loading...</h5> :
+            <ul className="list-group">
+              {reposList}
+            </ul> }
         </div>
       </div>
     );

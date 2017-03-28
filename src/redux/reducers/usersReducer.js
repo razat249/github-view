@@ -4,7 +4,7 @@ export default function reducer(state={
     fetched: false,
     error: null,    
 }, action) {
-    switch(action.type) {
+  switch(action.type) {
     case "FETCH_USERS_PENDING": {
       state = {...state};
       state.fetching = true;

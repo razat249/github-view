@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import ReposList from '../ReposList/ReposList.jsx';
+import UserEventsList from '../UserEventsList/UserEventsList.jsx';
 import Visualization from '../Visualization/Visualization.jsx';
 import './UserDetailsContainer.css';
 
@@ -13,18 +15,20 @@ class UserDetailsContainer extends Component {
     return (
       <div className="user-details-container-wrapper">
         <div>
-          <h4>User Name</h4>
+          <UserEventsList></UserEventsList>
         </div>
         <div>
-          <Visualization></Visualization>
-        </div>
-        <div>
-          <h4>Repositories</h4>
-          <ReposList></ReposList>
+          {/*<Visualization></Visualization>*/}
         </div>
       </div>
     );
   }
 }
 
-export default UserDetailsContainer;
+function mapStateToProps(state) {
+  return {
+    data: state.repos,
+  };
+}
+
+export default connect(mapStateToProps)(UserDetailsContainer);

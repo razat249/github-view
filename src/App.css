@@ -20,7 +20,7 @@
 
 .side-search-bar {
   padding-left: 30px;
-  border-right: 7px solid black;
+  border-right: 1px solid lightgray;
 }
 
 @keyframes App-logo-spin {

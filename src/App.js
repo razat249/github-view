@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.svg';
 import './App.css';
 import SearchSideBar from './components/SearchSideBar/SearchSideBar.jsx';
+import UserSummary from './components/UserSummary/UserSummary.jsx';
+import ReposList from './components/ReposList/ReposList.jsx';
 import UserDetailsContainer from './components/UserDetailsContainer/UserDetailsContainer.jsx';
 
 class App extends Component {
@@ -10,10 +12,14 @@ class App extends Component {
     return (
       <div className="App">
         <section className="row">
-          <section className="col-md-3 side-search-bar">
-            <SearchSideBar></SearchSideBar>        
+          <section className="col-md-2 side-search-bar">
+            <SearchSideBar></SearchSideBar>
+            <UserSummary></UserSummary>
           </section>
-          <section className="col-md-9">
+          <section className="col-md-2 side-search-bar">
+            <ReposList></ReposList>
+          </section>          
+          <section className="col-md-8">
             <UserDetailsContainer></UserDetailsContainer>
           </section>
         </section>
