@@ -39,7 +39,7 @@ class UserEventsList extends Component {
                     );
                     eventData.data = (
                         <blockquote>
-                            {event.payload.issue.body}
+                            <p>{event.payload.comment.body}</p>
                         </blockquote>
                     )
                     break;
