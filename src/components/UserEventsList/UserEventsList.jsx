@@ -10,14 +10,15 @@ class UserEventsList extends Component {
     }
 
     generateTimeline(eventList) {
-        console.log(eventList)
         var timelineList = eventList.map(function (event) {
             const github_base_url = 'https://github.com/';
             let eventData = {
-                title: "",
+                title: `Some github event. Type: ${event.type}`,
                 dateTime: <Timestamp time={event.created_at} format='full' />,
                 icon: "",
-                data: ""
+                data: <p>This github event is of type "{event.type}". 
+                        Right now this event is not recognized by our
+                        timeline. It can be supported in future</p>,
             };
             switch (event.type) {
                 case "PushEvent": {
@@ -42,6 +43,21 @@ class UserEventsList extends Component {
                             <p>{event.payload.comment.body}</p>
                         </blockquote>
                     )
+                    break;
+                }
+                case "CreateEvent": {
+                    if (event.payload.ref_type == "repository") {
+                        eventData.title = (<p><b>Created a repository: 
+                                            <a href={ github_base_url + event.repo.name } >{event.repo.name}</a>
+                                          </b></p>)
+                    } else if (event.payload.ref_type == "branch") {
+                        eventData.title = (<p><b>Made a branch 
+                                            <a href={ github_base_url + event.repo.name + '/tree/' + event.payload.ref }> { event.payload.ref } </a>
+                                            from
+                                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                                          </b></p>);
+                    }
+                    eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
                     break;
                 }
             }
@@ -69,22 +85,7 @@ class UserEventsList extends Component {
             <div>
                 <h4>Timeline</h4>
                 <Timeline>
-                    {this.generateTimeline(userEvents.data)}
-                    <TimelineEvent title="John Doe sent a SMS"
-                        createdAt="2016-09-12 10:06 PM"
-                        icon={<i className="material-icons md-18">textsms</i>}
-                    >
-                        I received the payment for $543. Should be shipping the item within a couple of hours.
-                    </TimelineEvent>
-                    <TimelineEvent
-                        title="You sent an email to John Doe"
-                        createdAt="2016-09-11 09:06 AM"
-                        icon={<i className="material-icons md-18">email</i>}
-                    >
-                        Like we talked, you said that you would share the shipment details? This is an urgent order and so I
-                        am losing patience. Can you expedite the process and pls do share the details asap. Consider this a
-                        gentle reminder if you are on track already!
-                    </TimelineEvent>
+                    {userEvents.fetching? <h5>Loading...</h5> : this.generateTimeline(userEvents.data)}
                 </Timeline>
             </div>
         );
