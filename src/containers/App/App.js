@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import logo from './logo.svg';
 import './App.css';
-import SearchSideBar from './components/SearchSideBar/SearchSideBar.jsx';
-import UserSummary from './components/UserSummary/UserSummary.jsx';
-import ReposList from './components/ReposList/ReposList.jsx';
-import UserDetailsContainer from './components/UserDetailsContainer/UserDetailsContainer.jsx';
+import SearchSideBar from '../../components/SearchSideBar/SearchSideBar.jsx';
+import UserSummary from '../../components/UserSummary/UserSummary.jsx';
+import ReposList from '../../components/ReposList/ReposList.jsx';
+import UserDetailsContainer from '../../components/UserDetailsContainer/UserDetailsContainer.jsx';
 
 class App extends Component {
   render() {
     return (
-      <div className="">
+      <div>
         <header className="text-center main-header">
           <h5 className="text-color-white"><b>GITHUB VIEW</b></h5>
         </header>

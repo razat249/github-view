@@ -18,6 +18,7 @@ class UserEventsList extends Component {
                 title: <p><b>Some github event. Type: {event.type}</b></p>,
                 dateTime: <Timestamp time={event.created_at} format='full' />,
                 icon: "",
+                iconColor: "",
                 data: <p>This github event is of type "{event.type}". 
                         Right now this event is not recognized by our
                         timeline. It can be supported in future</p>,
@@ -45,6 +46,7 @@ class UserEventsList extends Component {
                             <p className="user-event-list-timeline-comments">{event.payload.comment.body}</p>
                         </blockquote>
                     )
+                    eventData.iconColor = "lightblue";                    
                     break;
                 }
                 case "CreateEvent": {
@@ -60,6 +62,7 @@ class UserEventsList extends Component {
                                           </b></p>);
                     }
                     eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
+                    eventData.iconColor = "orange";
                     break;
                 }
             }
@@ -67,7 +70,8 @@ class UserEventsList extends Component {
                 <TimelineEvent key={eventData.id}
                     title={eventData.title}
                     createdAt={eventData.dateTime}
-                    icon={eventData.icon}>
+                    icon={eventData.icon}
+                    iconColor={eventData.iconColor}>
                         {eventData.data}
                 </TimelineEvent>
             )

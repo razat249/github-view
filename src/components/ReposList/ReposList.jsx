@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Icon} from 'react-fa';
 
+import { fetchRepoEvents } from '../../redux/actions/singleUserActions';
 import './ReposList.css';
 
 class ReposList extends Component {
   constructor(props) {
     super(props);
+
+    this.selectRepo = this.selectRepo.bind(this);
+  }
+
+  selectRepo(username, repo) {
+    this.props.dispatch(fetchRepoEvents(username, repo));
   }
 
   render() {
     if (this.props.repos.data[0]) {
       const self = this;
       var reposList = this.props.repos.data.map(function(repo){
-        return <a key={repo.id} href="#" className="list-group-item">{repo.name}</a>;
+        return <a key={repo.id} href="#" onClick={ e => self.selectRepo(repo.owner.login, repo.name) } className="list-group-item">{repo.name}</a>;
       })
     }
 

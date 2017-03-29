@@ -36,6 +36,8 @@ export default function reducer(state = {
         state.userSummary.fetching = false;
         break;
       }
+
+      
     case "FETCH_USER_EVENTS_PENDING":
       {
         state = { ...state };
@@ -52,6 +54,30 @@ export default function reducer(state = {
         break;
       }
     case "FETCH_USER_EVENTS_REJECTED":
+      {
+        state = { ...state };
+        state.userEvents.error = "user fetching error";
+        state.userEvents.fetched = false;
+        state.userEvents.fetching = false;
+        break;
+      }
+
+    case "FETCH_REPO_EVENTS_PENDING":
+      {
+        state = { ...state };
+        state.userEvents.fetching = true;
+        state.userEvents.fetched = false;
+        break;
+      }
+    case "FETCH_REPO_EVENTS_FULFILLED":
+      {
+        state = { ...state };
+        state.userEvents.data = action.payload.data;
+        state.userEvents.fetched = true;
+        state.userEvents.fetching = false;
+        break;
+      }
+    case "FETCH_REPO_EVENTS_REJECTED":
       {
         state = { ...state };
         state.userEvents.error = "user fetching error";

@@ -13,3 +13,10 @@ export function fetchUserEvents(user) {
         payload: axios.get(`https://api.github.com/users/${user}/events`),
     }
 }
+
+export function fetchRepoEvents(user, repo) {
+    return {
+        type: "FETCH_REPO_EVENTS",
+        payload: axios.get(`https://api.github.com/repos/${user}/${repo}/events`),
+    }
+}
