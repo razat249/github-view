@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 import { Icon } from 'react-fa';
 
+import './UserEventsList.css';
+
 class UserEventsList extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +15,7 @@ class UserEventsList extends Component {
         var timelineList = eventList.map(function (event) {
             const github_base_url = 'https://github.com/';
             let eventData = {
-                title: `Some github event. Type: ${event.type}`,
+                title: <p><b>Some github event. Type: {event.type}</b></p>,
                 dateTime: <Timestamp time={event.created_at} format='full' />,
                 icon: "",
                 data: <p>This github event is of type "{event.type}". 
@@ -40,7 +42,7 @@ class UserEventsList extends Component {
                     );
                     eventData.data = (
                         <blockquote>
-                            <p>{event.payload.comment.body}</p>
+                            <p className="user-event-list-timeline-comments">{event.payload.comment.body}</p>
                         </blockquote>
                     )
                     break;
@@ -48,7 +50,7 @@ class UserEventsList extends Component {
                 case "CreateEvent": {
                     if (event.payload.ref_type == "repository") {
                         eventData.title = (<p><b>Created a repository: 
-                                            <a href={ github_base_url + event.repo.name } >{event.repo.name}</a>
+                                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
                                           </b></p>)
                     } else if (event.payload.ref_type == "branch") {
                         eventData.title = (<p><b>Made a branch 
@@ -83,9 +85,9 @@ class UserEventsList extends Component {
         console.log("Event List: ", this.props);
         return (
             <div>
-                <h4>Timeline</h4>
+                <h5 className="user-event-list-heading"><b>Activity Timeline</b></h5> 
                 <Timeline>
-                    {userEvents.fetching? <h5>Loading...</h5> : this.generateTimeline(userEvents.data)}
+                    {userEvents.fetching ? <h5>Loading...</h5> : this.generateTimeline(userEvents.data)}
                 </Timeline>
             </div>
         );

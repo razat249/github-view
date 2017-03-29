@@ -1,6 +1,7 @@
-/*.App {
-  text-align: center;
-}*/
+.App {
+  /*text-align: center;*/
+  padding: 0 30px;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -19,7 +20,6 @@
 }
 
 .side-search-bar {
-  padding-left: 30px;
   border-right: 1px solid lightgray;
 }
 
