@@ -11,6 +11,7 @@ class Visualization extends Component {
   render() {
     return (
       <div>
+        <br/><br/><br/>
         <div className="visualization-wrapper">
           <CalendarHeatmap
             endDate={new Date()}

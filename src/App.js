@@ -10,10 +10,14 @@ import UserDetailsContainer from './components/UserDetailsContainer/UserDetailsC
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <section className="row">
+      <div className="">
+        <header className="text-center main-header">
+          <h5 className="text-color-white"><b>GITHUB VIEW</b></h5>
+        </header>
+        <section className="row App">
           <section className="col-md-2 side-search-bar">
             <SearchSideBar></SearchSideBar>
+            <hr/>
             <UserSummary></UserSummary>
           </section>
           <section className="col-md-2 side-search-bar">

@@ -82,12 +82,34 @@ class UserEventsList extends Component {
         if (this.props.user.userEvents.fetched) {
             userEvents = this.props.user.userEvents;
         }
-        console.log("Event List: ", this.props);
         return (
             <div>
-                <h5 className="user-event-list-heading"><b>Activity Timeline</b></h5> 
+                <div className="row lightslategray-color user-event-list-head">
+                    <div className="pull-left">
+                        <h5><b>Activity Timeline</b></h5>
+                    </div>
+                    <div className="pull-right user-event-list-checkbox">
+                        <form>
+                            <div className="checkbox-inline">
+                                <label><input type="checkbox" value="1" />push/commits</label>
+                            </div>
+                            <div className="checkbox-inline">
+                                <label><input type="checkbox" value="" />comments</label>
+                            </div>
+                            <div className="checkbox-inline disabled">
+                                <label><input type="checkbox" value="" />create</label>
+                            </div>
+                            <div className="checkbox-inline disabled">
+                                <label><input type="checkbox" value="" />forks</label>
+                            </div>
+                            <div className="checkbox-inline disabled">
+                                <label><input type="checkbox" value="" />gist</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <Timeline>
-                    {userEvents.fetching ? <h5>Loading...</h5> : this.generateTimeline(userEvents.data)}
+                    { userEvents.fetching ? <h5>Loading...</h5> : this.generateTimeline(userEvents.data) }
                 </Timeline>
             </div>
         );

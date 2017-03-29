@@ -23,6 +23,19 @@
   border-right: 1px solid lightgray;
 }
 
+.lightslategray-color {
+    color: lightslategray
+}
+
+.main-header {
+  padding: 5px 0;
+  background-color: #24292e;
+}
+
+.text-color-white {
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

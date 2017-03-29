@@ -37,9 +37,9 @@ class SearchSideBar extends Component {
     }
 
     return (
-      <div>
+      <div className="search-side-bar-wrapper">
         <div>
-          <h4>Search User</h4>
+          <h5 className="lightslategray-color"><b>Search User</b></h5>
           <from className="form-group">
             <input list="users" className="form-control" value={this.state.value} onChange={this.handleChange}/>
             <datalist id="users">

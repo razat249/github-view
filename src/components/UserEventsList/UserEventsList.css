@@ -1,7 +1,11 @@
-.user-event-list-heading {
-    color: lightslategray
-}
-
 .user-event-list-timeline-comments {
     font-size: 12px;
+}
+
+.user-event-list-checkbox {
+    margin: 10px 0;
+}
+
+.user-event-list-head {
+    padding: 0 20px;
 }
