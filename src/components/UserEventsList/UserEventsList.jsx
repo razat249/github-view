@@ -25,12 +25,15 @@ class UserEventsList extends Component {
             };
             switch (event.type) {
                 case "PushEvent": {
-                    eventData.title = (<p><b>Pushed {event.payload.size} commit(s) to
+                    eventData.title = (<p><b>Pushed {event.payload.commits.length} commit(s) to
                                             <a href={github_base_url + event.repo.name}> {event.repo.name}</a></b>
                                       </p>);
-                    eventData.icon = <Icon name="link" />;
                     eventData.data = event.payload.commits.map(function (commit) {
-                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message }</p>
+                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } <b>by </b>
+                                    <a href={github_base_url + commit.author.name} target="_">
+                                        {commit.author.name}
+                                    </a>
+                               </p>
                     });
                     break;
                 }

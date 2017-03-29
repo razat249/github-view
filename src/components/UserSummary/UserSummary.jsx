@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Icon } from 'react-fa';
 
 class UserSummary extends Component {
   render() {
@@ -17,9 +18,9 @@ class UserSummary extends Component {
           {user.data.bio}
         </p>
         <hr/>
-        <p>{user.data.location}</p>
-        <p>{user.data.email}</p>
-        <p>{user.data.blog}</p>
+        <p><Icon name="map-marker" /> {user.data.location}</p>
+        <p><Icon name="envelope" /> <a href={"mailto:" + user.data.email}>{user.data.email}</a></p>
+        <p><Icon name="share" /> <a href={"http://" + user.data.blog} target="_">{user.data.blog}</a></p>
       </div>
     );
   }
