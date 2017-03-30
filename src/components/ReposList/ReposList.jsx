@@ -17,9 +17,10 @@ class ReposList extends Component {
   }
 
   render() {
-    if (this.props.repos.data[0]) {
+    const repos = this.props.repos;
+    if (repos.data[0]) {
       const self = this;
-      var reposList = this.props.repos.data.map(function(repo){
+      var reposList = repos.data.map(function(repo){
         return <a key={repo.id} href="#" onClick={ e => self.selectRepo(repo.owner.login, repo.name) } className="list-group-item">{repo.name}</a>;
       })
     }
@@ -28,11 +29,13 @@ class ReposList extends Component {
     return (
       <div className="reposlist-wrapper">
         <div>
-          <h5 className="lightslategray-color"><b>Repositories</b></h5>
-          { this.props.repos.fetching ? <h5><Icon spin name="spinner" /> Loading...</h5> :
-            <ul className="list-group">
-              {reposList}
-            </ul> }
+          <h4 className="lightslategray-color"><b>Repositories</b></h4>
+          { repos.fetching ? <h4 className="lightslategray-color text-center"><b><Icon spin name="spinner" /> Loading...</b></h4> :
+            repos.fetched ?
+              <ul className="list-group">
+                {reposList}
+              </ul>:
+              <h6 className="lightslategray-color text-center"><b>Your repos will load here.</b></h6> }
         </div>
       </div>
     );

@@ -29,7 +29,7 @@ class UserEventsList extends Component {
                                             <a href={github_base_url + event.repo.name}> {event.repo.name}</a></b>
                                       </p>);
                     eventData.data = event.payload.commits.map(function (commit) {
-                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } <b>by </b>
+                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } <b>-- commited by </b>
                                     <a href={github_base_url + commit.author.name} target="_">
                                         {commit.author.name}
                                     </a>
