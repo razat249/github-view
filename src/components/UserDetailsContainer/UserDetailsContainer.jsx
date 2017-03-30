@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Icon } from 'react-fa';
 
 import ReposList from '../ReposList/ReposList.jsx';
 import UserEventsList from '../UserEventsList/UserEventsList.jsx';
@@ -31,8 +32,27 @@ class UserDetailsContainer extends Component {
   }
 
   render() {
-    return (
-      <div className="user-details-container-wrapper">
+    const userEvents = this.props.data.singleUser.userEvents;
+    
+    const intialState = (
+      <div className="lightslategray-color text-center user-details-container-initial">
+        <Icon name="area-chart" />
+        <h4><b>Your visualization will appear here.</b></h4>
+      </div>
+    );
+
+    const fetchingState = (
+      <div>
+        <br/><br/>
+        <h2 className="lightslategray-color text-center">
+          <Icon spin name="spinner" />
+          <b> Loading...</b>
+        </h2>
+      </div>
+    );
+
+    const fetchedState = (
+      <div>
         <section>
           <ul className="nav nav-tabs row">
             <li className={ this.state.activeTimeline + " col-md-6 text-center" }>
@@ -51,12 +71,18 @@ class UserDetailsContainer extends Component {
         </div>
       </div>
     );
+
+    return (
+      <div className="user-details-container-wrapper">
+        { userEvents.fetched ? fetchedState : ( userEvents.fetching ? fetchingState : intialState ) }
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    data: state.repos,
+    data: state,
   };
 }
 

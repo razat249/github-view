@@ -13,9 +13,10 @@ class Visualization extends Component {
     return (
       <div>
         <br />
-          <div className="text-center">
-            <h5 className="lightslategray-color"><b>Calendar Heatmap</b></h5>            
-          </div>
+        <div className="alert alert-warning">This page will not work right now. (Under Development)</div>
+        <div className="text-center">
+          <h5 className="lightslategray-color"><b>Calendar Heatmap</b></h5>            
+        </div>
         <section>
           <div className="inline-block">
             <DropdownButton title="Choose Visualization" id="visual">
