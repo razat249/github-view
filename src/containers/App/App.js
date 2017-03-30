@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import { Icon } from 'react-fa';
 
 import logo from './logo.svg';

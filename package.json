@@ -2,13 +2,16 @@
   "name": "github-view",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://razat249.github.io/github-view",
   "devDependencies": {
+    "gh-pages": "^0.12.0",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
     "axios": "^0.15.3",
     "bootstrap": "^3.3.7",
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.8",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
     "react-event-timeline": "^1.2.2",
@@ -25,6 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }

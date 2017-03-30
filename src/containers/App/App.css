@@ -20,6 +20,10 @@
   color: darkred;
 }
 
+.inline-block {
+  display: inline;
+}
+
 *::-webkit-scrollbar {
   width: 4px;
 }
