@@ -11,7 +11,7 @@
 The site is running here: [https://razat249.github.io/github-view](https://razat249.github.io/github-view)
 
 **Screenshot**
-![Main page](https://lh3.googleusercontent.com/wTiK3kMubSwQ6aUMOJMJLfg7RaxOSl2Q8u4AeCUIudEZRNTIYTfhNPJppfBw-vkyy3rGoeKgb5SQwYs=w1535-h786-rw)
+![Main page](https://cloud.githubusercontent.com/assets/10090911/24558144/c9277fc0-1657-11e7-9027-dcf48e44a1d2.png)
 
 ## contributing
 This is a react-redux app. Follow below steps for building the project.
