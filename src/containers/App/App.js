@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'react-fa';
 
-import logo from './logo.svg';
 import './App.css';
 import SearchSideBar from '../../components/SearchSideBar/SearchSideBar.jsx';
 import UserSummary from '../../components/UserSummary/UserSummary.jsx';

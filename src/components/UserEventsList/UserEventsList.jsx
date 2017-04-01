@@ -41,7 +41,7 @@ class UserEventsList extends Component {
                     eventData.title = (
                         <p><b>
                             Commented on an <a href={event.payload.issue.html_url}>Issue</a> on 
-                            <a href={github_base_url + event.repo.name}> {event.repo.name}</a>
+                            <a href={github_base_url + event.repo.name} target="_"> {event.repo.name}</a>
                         </b></p>
                     );
                     eventData.data = (
@@ -53,19 +53,64 @@ class UserEventsList extends Component {
                     break;
                 }
                 case "CreateEvent": {
-                    if (event.payload.ref_type == "repository") {
+                    if (event.payload.ref_type === "repository") {
                         eventData.title = (<p><b>Created a repository: 
                                             <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
                                           </b></p>)
-                    } else if (event.payload.ref_type == "branch") {
+                    } else if (event.payload.ref_type === "branch") {
                         eventData.title = (<p><b>Made a branch 
                                             <a href={ github_base_url + event.repo.name + '/tree/' + event.payload.ref }> { event.payload.ref } </a>
                                             from
-                                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                                            <a href={ github_base_url + event.repo.name } target="_"> {event.repo.name}</a>
                                           </b></p>);
                     }
                     eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
                     eventData.iconColor = "orange";
+                    break;
+                }
+                case "IssuesEvent": {
+                    eventData.title = (
+                        <p><b>
+                            { event.payload.action } -- <a href={event.payload.issue.html_url}>issue</a> on 
+                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                        </b></p>
+                    );
+                    eventData.data = (
+                        <div>
+                            <p><b>Issue title</b> - {event.payload.issue.title}</p>
+                            <a href={event.payload.issue.html_url} target="_">See it on github <Icon name="external-link" /></a>
+                        </div>
+                    );
+                    eventData.iconColor = "pink";
+                    break;
+                }
+                case "ForkEvent": {
+                    eventData.title = (
+                        <p><b>
+                            Forked <a href={github_base_url + event.payload.forkee.full_name} target="_">{event.payload.forkee.full_name}</a>
+                            <span> from 
+                                <a href={github_base_url + event.repo.name} target="_" > { event.repo.name }</a>
+                            </span>
+                        </b></p>
+                    );
+                    eventData.data = <p><b>Repo description:</b> { event.payload.forkee.description }</p>;
+                    eventData.iconColor = "yellow";
+                    break;
+                }
+                case "PullRequestEvent": {
+                    eventData.title = (
+                        <p><b>
+                            { event.payload.action } -- <a href={event.payload.pull_request.html_url}>pull request</a> for 
+                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                        </b></p>
+                    );
+                    eventData.data = (
+                        <div>
+                            <p><b>{ event.payload.pull_request.title }</b></p>
+                            <p>{ event.payload.pull_request.body }</p>
+                        </div>
+                    );
+                    eventData.iconColor = "#706bff";
                     break;
                 }
             }
