@@ -9,10 +9,55 @@ import './UserEventsList.css';
 class UserEventsList extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            filters: []
+        }
+    }
+
+    filterTimeline(item) {
+        const filters = this.state.filters;
+
+        if (filters.length > 0) {
+            if (filters.indexOf(item.type) >= 0) {
+                return true;
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+    addFilter(type) {
+        const filters = this.state.filters;
+
+        if (filters.indexOf(type) === -1) {
+            filters.push(type);
+            this.setState({ filters });
+        }
+    }
+
+    removeFilter(type) {
+        const filters = this.state.filters;
+
+        filters.splice(filters.indexOf(type), 1);
+
+        this.setState({ filters });
+    }
+
+    handleFilterChange(type, event) {
+        if (event.target.checked) {
+            this.addFilter(type)
+            return true
+        }
+
+        this.removeFilter(type)
+        return false
     }
 
     generateTimeline(eventList) {
-        var timelineList = eventList.map(function (event) {
+        var timelineList = eventList.filter(item => this.filterTimeline(item)).map(function (event) {
             const github_base_url = 'https://github.com/';
             let eventData = {
                 title: <p><b>Some github event. Type: {event.type}</b></p>,
@@ -49,7 +94,7 @@ class UserEventsList extends Component {
                             <p className="user-event-list-timeline-comments">{event.payload.comment.body}</p>
                         </blockquote>
                     )
-                    eventData.iconColor = "lightblue";                    
+                    eventData.iconColor = "lightblue";
                     break;
                 }
                 case "CreateEvent": {
@@ -143,19 +188,19 @@ class UserEventsList extends Component {
                     <div className="pull-right user-event-list-checkbox">
                         <form>
                             <div className="checkbox-inline">
-                                <label><input type="checkbox" value="1" />push/commits</label>
+                                <label><input onChange={(e) => this.handleFilterChange('PushEvent', e)} type="checkbox" value="1" />push/commits</label>
                             </div>
                             <div className="checkbox-inline">
-                                <label><input type="checkbox" value="" />comments</label>
+                                <label><input onChange={(e) => this.handleFilterChange('IssueCommentEvent', e)} type="checkbox" value="" />comments</label>
                             </div>
                             <div className="checkbox-inline disabled">
-                                <label><input type="checkbox" value="" />create</label>
+                                <label><input onChange={(e) => this.handleFilterChange('CreateEvent', e)} type="checkbox" value="" />create</label>
                             </div>
                             <div className="checkbox-inline disabled">
-                                <label><input type="checkbox" value="" />forks</label>
+                                <label><input onChange={(e) => this.handleFilterChange('ForkEvent', e)} type="checkbox" value="" />forks</label>
                             </div>
                             <div className="checkbox-inline disabled">
-                                <label><input type="checkbox" value="" />gist</label>
+                                <label><input onChange={(e) => this.handleFilterChange('GistEvent', e)} type="checkbox" value="" />gist</label>
                             </div>
                         </form>
                     </div>
