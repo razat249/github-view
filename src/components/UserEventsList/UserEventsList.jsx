@@ -47,6 +47,7 @@ class UserEventsList extends Component {
     }
 
     handleFilterChange(type, event) {
+        console.log("Pupu");
         if (event.target.checked) {
             this.addFilter(type)
             return true
@@ -80,6 +81,7 @@ class UserEventsList extends Component {
                                     </a>
                                </p>
                     });
+                    eventData.iconColor = "lightgreen";
                     break;
                 }
                 case "IssueCommentEvent": {
@@ -185,7 +187,7 @@ class UserEventsList extends Component {
                     <div className="pull-left">
                         <h5><b>Activity Timeline</b></h5>
                     </div>
-                    <div className="pull-right user-event-list-checkbox">
+                    <div className="text-center user-event-list-checkbox">
                         <form>
                             <div className="checkbox-inline">
                                 <label><input onChange={(e) => this.handleFilterChange('PushEvent', e)} type="checkbox" value="1" />push/commits</label>
