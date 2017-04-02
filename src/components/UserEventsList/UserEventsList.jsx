@@ -190,22 +190,22 @@ class UserEventsList extends Component {
                     <div className="text-center user-event-list-checkbox">
                         <form>
                             <div className="checkbox-inline">
-                                <label><input onChange={(e) => this.handleFilterChange('PushEvent', e)} type="checkbox" value="1" />push/commits</label>
+                                <label><input onChange={(e) => this.handleFilterChange('PushEvent', e)} type="checkbox" value="1" />Push/commits</label>
                             </div>
                             <div className="checkbox-inline">
-                                <label><input onChange={(e) => this.handleFilterChange('IssueCommentEvent', e)} type="checkbox" value="" />comments</label>
+                                <label><input onChange={(e) => this.handleFilterChange('IssueCommentEvent', e)} type="checkbox" value="" />Comments</label>
                             </div>
                             <div className="checkbox-inline">
                                 <label><input onChange={(e) => this.handleFilterChange('IssuesEvent', e)} type="checkbox" value="" />Issues</label>
+                            </div>
+                            <div className="checkbox-inline disabled">
+                                <label><input onChange={(e) => this.handleFilterChange('PullRequestEvent', e)} type="checkbox" value="" />PR</label>
                             </div>
                             <div className="checkbox-inline disabled">
                                 <label><input onChange={(e) => this.handleFilterChange('CreateEvent', e)} type="checkbox" value="" />create</label>
                             </div>
                             <div className="checkbox-inline disabled">
                                 <label><input onChange={(e) => this.handleFilterChange('ForkEvent', e)} type="checkbox" value="" />forks</label>
-                            </div>
-                            <div className="checkbox-inline disabled">
-                                <label><input onChange={(e) => this.handleFilterChange('GistEvent', e)} type="checkbox" value="" />gist</label>
                             </div>
                         </form>
                     </div>
