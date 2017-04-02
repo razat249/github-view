@@ -21,7 +21,7 @@ This is a react-redux app. Follow below steps for building the project.
 - `npm install`
 - **RELAX . . .**
 - `npm start` for starting development server.
-- `npm test` for runnig test.
+- `npm test` for running test.
 - `npm run build` for building the deployment build.
 
 > This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -29,7 +29,7 @@ This is a react-redux app. Follow below steps for building the project.
 > You can find the most recent version of the create-react-app guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Issues
-You can report bugs at the 
+You can report bugs at the
 [issue tracker](https://github.com/razat249/github-view/issues).
 > Help us by creating Pull Requests and solving [issues](https://github.com/razat249/github-view/issues)
 
