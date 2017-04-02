@@ -195,6 +195,9 @@ class UserEventsList extends Component {
                             <div className="checkbox-inline">
                                 <label><input onChange={(e) => this.handleFilterChange('IssueCommentEvent', e)} type="checkbox" value="" />comments</label>
                             </div>
+                            <div className="checkbox-inline">
+                                <label><input onChange={(e) => this.handleFilterChange('IssuesEvent', e)} type="checkbox" value="" />Issues</label>
+                            </div>
                             <div className="checkbox-inline disabled">
                                 <label><input onChange={(e) => this.handleFilterChange('CreateEvent', e)} type="checkbox" value="" />create</label>
                             </div>

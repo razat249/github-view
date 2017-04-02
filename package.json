@@ -5,6 +5,7 @@
   "homepage": "https://razat249.github.io/github-view",
   "devDependencies": {
     "gh-pages": "^0.12.0",
+    "redux-logger": "^3.0.1",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
@@ -21,7 +22,6 @@
     "react-timestamp": "^3.4.0",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
-    "redux-logger": "^3.0.1",
     "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.2.0"
   },
