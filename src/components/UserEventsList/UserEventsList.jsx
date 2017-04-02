@@ -47,7 +47,7 @@ class UserEventsList extends Component {
     }
 
     handleFilterChange(type, event) {
-        console.log("Pupu"); /*<- lol wut*/
+        console.log("Pupu");
         if (event.target.checked) {
             this.addFilter(type)
             return true
@@ -115,8 +115,8 @@ class UserEventsList extends Component {
                       eventData.data = <p><b>Repo description:</b> No description provided.</p>
                     } else {
                       eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
-                      eventData.iconColor = "orange";
                     }
+                    eventData.iconColor = "orange";
                     break;
                 }
                 case "IssuesEvent": {
