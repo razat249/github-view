@@ -65,14 +65,14 @@ class UserEventsList extends Component {
                 dateTime: <Timestamp time={event.created_at} format='full' />,
                 icon: "",
                 iconColor: "",
-                data: <p>This github event is of type "{event.type}". 
+                data: <p>This github event is of type "{event.type}".
                         Right now this event is not recognized by our
                         timeline. It can be supported in future</p>,
             };
             switch (event.type) {
                 case "PushEvent": {
                     eventData.title = (<p><b>Pushed {event.payload.commits.length} commit(s) to
-                                            <a href={github_base_url + event.repo.name}> {event.repo.name}</a></b>
+                                            <a href={github_base_url + event.repo.name} target="_"> {event.repo.name}</a></b>
                                       </p>);
                     eventData.data = event.payload.commits.map(function (commit) {
                         return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } <b>-- commited by </b>
@@ -87,7 +87,7 @@ class UserEventsList extends Component {
                 case "IssueCommentEvent": {
                     eventData.title = (
                         <p><b>
-                            Commented on an <a href={event.payload.issue.html_url}>Issue</a> on 
+                            Commented on an <a href={event.payload.issue.html_url} target="_">Issue</a> on
                             <a href={github_base_url + event.repo.name} target="_"> {event.repo.name}</a>
                         </b></p>
                     );
@@ -101,25 +101,29 @@ class UserEventsList extends Component {
                 }
                 case "CreateEvent": {
                     if (event.payload.ref_type === "repository") {
-                        eventData.title = (<p><b>Created a repository: 
-                                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                        eventData.title = (<p><b>Created a repository:
+                                            <a href={ github_base_url + event.repo.name } target="_"> {event.repo.name}</a>
                                           </b></p>)
                     } else if (event.payload.ref_type === "branch") {
-                        eventData.title = (<p><b>Made a branch 
-                                            <a href={ github_base_url + event.repo.name + '/tree/' + event.payload.ref }> { event.payload.ref } </a>
+                        eventData.title = (<p><b>Made a branch
+                                            <a href={ github_base_url + event.repo.name + '/tree/' + event.payload.ref } target="_"> { event.payload.ref } </a>
                                             from
                                             <a href={ github_base_url + event.repo.name } target="_"> {event.repo.name}</a>
                                           </b></p>);
                     }
-                    eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
+                    if (event.payload.description === null) {
+                      eventData.data = <p><b>Repo description:</b> No description provided.</p>
+                    } else {
+                      eventData.data = <p><b>Repo description:</b> { event.payload.description }</p>
+                    }
                     eventData.iconColor = "orange";
                     break;
                 }
                 case "IssuesEvent": {
                     eventData.title = (
                         <p><b>
-                            { event.payload.action } -- <a href={event.payload.issue.html_url}>issue</a> on 
-                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                            { event.payload.action } -- <a href={event.payload.issue.html_url} target="_">issue</a> on
+                            <a href={ github_base_url + event.repo.name } target="_"> {event.repo.name}</a>
                         </b></p>
                     );
                     eventData.data = (
@@ -135,7 +139,7 @@ class UserEventsList extends Component {
                     eventData.title = (
                         <p><b>
                             Forked <a href={github_base_url + event.payload.forkee.full_name} target="_">{event.payload.forkee.full_name}</a>
-                            <span> from 
+                            <span> from
                                 <a href={github_base_url + event.repo.name} target="_" > { event.repo.name }</a>
                             </span>
                         </b></p>
@@ -147,8 +151,8 @@ class UserEventsList extends Component {
                 case "PullRequestEvent": {
                     eventData.title = (
                         <p><b>
-                            { event.payload.action } -- <a href={event.payload.pull_request.html_url}>pull request</a> for 
-                            <a href={ github_base_url + event.repo.name } > {event.repo.name}</a>
+                            { event.payload.action } -- <a href={event.payload.pull_request.html_url} target="_">pull request</a> for
+                            <a href={ github_base_url + event.repo.name } target="_"> {event.repo.name}</a>
                         </b></p>
                     );
                     eventData.data = (
@@ -226,4 +230,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(UserEventsList);
-
