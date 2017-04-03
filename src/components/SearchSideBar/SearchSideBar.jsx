@@ -46,7 +46,7 @@ class SearchSideBar extends Component {
               {usersList}
             </datalist>
             <h5>
-              {this.props.users.fetching ? <span><Icon spin name="spinner" /> Loading...</span>: ""}
+              {this.props.users.fetching ? <span><Icon spin name="circle-o-notch" /> Loading...</span>: ""}
             </h5>
             <button className="btn btn-primary" onClick={ e => this.handleClick(this.state.value) }>Submit</button>
           </from>

@@ -9,7 +9,7 @@ class UserSummary extends Component {
     return (
       <div>
         { 
-          user.fetching ? <h4 className="text-center lightslategray-color"><b>Loading...</b></h4> :
+          user.fetching ? <h4 className="text-center lightslategray-color"><b><Icon spin name="circle-o-notch" /> Loading...</b></h4> :
             user.fetched ?
             <div>
               <div><img src={user.data.avatar_url} className="img-responsive" alt=""/></div>

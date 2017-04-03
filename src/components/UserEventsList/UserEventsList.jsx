@@ -206,10 +206,10 @@ class UserEventsList extends Component {
                                 <label><input onChange={(e) => this.handleFilterChange('PullRequestEvent', e)} type="checkbox" value="" />PR</label>
                             </div>
                             <div className="checkbox-inline disabled">
-                                <label><input onChange={(e) => this.handleFilterChange('CreateEvent', e)} type="checkbox" value="" />create</label>
+                                <label><input onChange={(e) => this.handleFilterChange('CreateEvent', e)} type="checkbox" value="" />Create</label>
                             </div>
                             <div className="checkbox-inline disabled">
-                                <label><input onChange={(e) => this.handleFilterChange('ForkEvent', e)} type="checkbox" value="" />forks</label>
+                                <label><input onChange={(e) => this.handleFilterChange('ForkEvent', e)} type="checkbox" value="" />Forks</label>
                             </div>
                         </form>
                     </div>

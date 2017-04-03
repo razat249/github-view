@@ -10,7 +10,7 @@ export function fetchUserSummary(user) {
 export function fetchUserEvents(user) {
     return {
         type: "FETCH_USER_EVENTS",
-        payload: axios.get(`https://api.github.com/users/${user}/events`),
+        payload: axios.get(`https://api.github.com/users/${user}/events?page=1&per_page=50`),
     }
 }
 

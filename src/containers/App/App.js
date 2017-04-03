@@ -7,7 +7,6 @@ import UserSummary from '../../components/UserSummary/UserSummary.jsx';
 import ReposList from '../../components/ReposList/ReposList.jsx';
 import UserDetailsContainer from '../../components/UserDetailsContainer/UserDetailsContainer.jsx';
 
-
 class App extends Component {
   render() {
     return (

@@ -45,7 +45,7 @@ class UserDetailsContainer extends Component {
       <div>
         <br/><br/>
         <h2 className="lightslategray-color text-center">
-          <Icon spin name="spinner" />
+          <Icon spin name="circle-o-notch" />
           <b> Loading...</b>
         </h2>
       </div>
