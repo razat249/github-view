@@ -1,4 +1,5 @@
 export default function reducer(state={
+    selectedRepo: {},
     data: [],
     fetching: false,
     fetched: false,
@@ -9,6 +10,7 @@ export default function reducer(state={
       state = {...state};
       state.fetching = true;
       state.fetched = false;
+      state.selectedRepo = {};
       break;
     }
     case "FETCH_REPOS_FULFILLED": {
@@ -28,6 +30,7 @@ export default function reducer(state={
       state.data.forEach(function(repo) {
         if (action.payload === repo.id) {
           repo.selected = true;
+          state.selectedRepo = repo;
         } else {
           repo.selected = false;
         }

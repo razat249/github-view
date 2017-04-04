@@ -9,3 +9,16 @@
 .user-event-list-head {
     padding: 0 20px;
 }
+
+.selected-repo-label {
+    background-color: #15757b;
+    color: white;
+}
+
+/*.selected-repo-label-close {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0 10px;
+}*/
+

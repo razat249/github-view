@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline'
-import { connect } from 'react-redux';
 import Timestamp from 'react-timestamp';
 import { Icon } from 'react-fa';
+import { Button, Label } from 'react-bootstrap';
 
 import './UserEventsList.css';
 
@@ -186,7 +186,13 @@ class UserEventsList extends Component {
             <div>
                 <div className="row lightslategray-color user-event-list-head">
                     <div className="pull-left">
-                        <h5><b>Activity Timeline</b></h5>
+                        <div className="text-center">
+                            <h5><b>Activity Timeline</b></h5>
+                            <Label className="selected-repo-label" bsStyle="info">
+                                {this.props.selectedRepo.name}
+                                {/*<Button className="selected-repo-label-close"><Icon name="times-circle" /></Button>*/}
+                            </Label>
+                        </div>
                     </div>
                     <div className="text-center user-event-list-checkbox">
                         <form>
@@ -219,11 +225,4 @@ class UserEventsList extends Component {
     }
 }
 
-
-function mapStateToProps(state) {
-    return {
-        user: state.singleUser,
-    };
-}
-
-export default connect(mapStateToProps)(UserEventsList);
+export default UserEventsList;
