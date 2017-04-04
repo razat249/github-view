@@ -13,3 +13,9 @@ export function selectRepo(id) {
         payload: id,
     }
 }
+
+export function unSelectRepo() {
+    return {
+        type: "UN_SELECT_REPO",
+    }
+}

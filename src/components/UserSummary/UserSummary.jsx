@@ -4,7 +4,6 @@ import { Icon } from 'react-fa';
 
 class UserSummary extends Component {
   render() {
-    console.log("Pupu", this.props);
     const user = this.props.singleUser.userSummary
     return (
       <div>

@@ -64,7 +64,7 @@ class UserDetailsContainer extends Component {
           </ul>
         </section>
         <div>
-          { this.state.activeTimeline ? <UserEventsList user={this.props.data.singleUser} selectedRepo={this.props.data.repos.selectedRepo} /> : "" }
+          { this.state.activeTimeline ? <UserEventsList user={this.props.data.singleUser} dispatch={this.props.dispatch} username={this.props.data.singleUser.userSummary.data.login} selectedRepo={this.props.data.repos.selectedRepo} /> : "" }
         </div>
         <div>
           { this.state.activeVisualization ? <Visualization></Visualization> : "" }

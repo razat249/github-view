@@ -4,6 +4,8 @@ import Timestamp from 'react-timestamp';
 import { Icon } from 'react-fa';
 import { Button, Label } from 'react-bootstrap';
 
+import { fetchUserEvents } from '../../redux/actions/singleUserActions';
+import { unSelectRepo } from '../../redux/actions/reposActions';
 import './UserEventsList.css';
 
 class UserEventsList extends Component {
@@ -175,6 +177,12 @@ class UserEventsList extends Component {
         return timelineList;
     }
 
+    removeRepo() {
+        console.log("asdhjlkasdhjkahkdkahs");
+        this.props.dispatch(unSelectRepo());
+        this.props.dispatch(fetchUserEvents(this.props.username));
+    }
+
     render() {
         let userEvents = {
             data: [],
@@ -188,10 +196,12 @@ class UserEventsList extends Component {
                     <div className="pull-left">
                         <div className="text-center">
                             <h5><b>Activity Timeline</b></h5>
+                            {this.props.selectedRepo.name ? 
                             <Label className="selected-repo-label" bsStyle="info">
                                 {this.props.selectedRepo.name}
-                                {/*<Button className="selected-repo-label-close"><Icon name="times-circle" /></Button>*/}
-                            </Label>
+                                <Button onClick={e => this.removeRepo()} className="selected-repo-label-close"><Icon name="times-circle" /></Button>
+                            </Label>:
+                            ""}
                         </div>
                     </div>
                     <div className="text-center user-event-list-checkbox">

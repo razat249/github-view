@@ -26,7 +26,7 @@ export default function reducer(state={
       break;
     }
     case "SELECT_REPO": {
-      state = {...state}
+      state = {...state};
       state.data.forEach(function(repo) {
         if (action.payload === repo.id) {
           repo.selected = true;
@@ -35,6 +35,15 @@ export default function reducer(state={
           repo.selected = false;
         }
       });
+      break;      
+    }
+    case "UN_SELECT_REPO": {
+      state = {...state};
+      state.data.forEach(function(repo) {
+        repo.selected = false;
+      });
+      state.selectedRepo = {};
+      break;
     }
   }
   
