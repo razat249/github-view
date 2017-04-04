@@ -183,8 +183,7 @@ class UserEventsList extends Component {
     }
 
     loadMore() {
-        console.log("asdhjlkasdhjkahkdkahs");
-        this.props.dispatch(loadMoreEvents(this.props.username, this.props.selectedRepo.name, this.props.user.userEvents.pageNumberToLoad+1));
+        this.props.dispatch(loadMoreEvents(this.props.username, this.props.selectedRepo.name, this.props.user.userEvents.loadMore.pageNumberToLoad+1));
     }
 
     render() {
@@ -234,7 +233,16 @@ class UserEventsList extends Component {
                 <Timeline>
                     { userEvents.fetching ? <h5>Loading...</h5> : this.generateTimeline(userEvents.data) }
                 </Timeline>
-                <Button onClick={e => this.loadMore()}>Load More..</Button>
+                <div className="well text-center">
+                    {
+                        userEvents.loadMore.fetching ? 
+                        <h4 className="lightslategray-color text-center">
+                            <Icon spin name="circle-o-notch" />
+                            <b> Loading...</b>
+                        </h4> :
+                        <Button bsStyle="primary" onClick={e => this.loadMore()}>Load More</Button>
+                    }
+                </div>
             </div>
         );
     }

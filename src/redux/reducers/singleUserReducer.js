@@ -6,7 +6,12 @@ export default function reducer(state = {
     error: null,
   },
   userEvents: {
-    pageNumberToLoad: 1,
+    loadMore: {
+      pageNumberToLoad: 1,
+      fetching: false,
+      fetched: false,
+      error: null,
+    },
     data: {},
     fetching: false,
     fetched: false,
@@ -48,6 +53,7 @@ export default function reducer(state = {
         };
         state.userEvents.fetching = true;
         state.userEvents.fetched = false;
+        state.userEvents.loadMore.pageNumberToLoad = 1;
         break;
       }
     case "FETCH_USER_EVENTS_FULFILLED":
@@ -75,6 +81,7 @@ export default function reducer(state = {
         };
         state.userEvents.fetching = true;
         state.userEvents.fetched = false;
+        state.userEvents.loadMore.pageNumberToLoad = 1;
         break;
       }
     case "FETCH_REPO_EVENTS_FULFILLED":
@@ -95,11 +102,34 @@ export default function reducer(state = {
         state.userEvents.fetching = false;
         break;
       }
+
+
+    case "LOAD_MORE_EVENTS_PENDING":
+      {
+        state = { ...state
+        };
+        state.userEvents.loadMore.fetched = false;
+        state.userEvents.loadMore.fetching = true;
+        break;
+      } 
     case "LOAD_MORE_EVENTS_FULFILLED":
       {
-        state = {...state};
-        state.userEvents.pageNumberToLoad++;
+        state = { ...state
+        };
+        state.userEvents.loadMore.fetched = true;
+        state.userEvents.loadMore.fetching = false;
+        state.userEvents.loadMore.pageNumberToLoad++;
         state.userEvents.data = state.userEvents.data.concat(action.payload.data);
+        break;
+      }
+      case "LOAD_MORE_EVENTS_REJECTED":
+      {
+        state = { ...state
+        };
+        state.userEvents.loadMore.fetched = false;
+        state.userEvents.loadMore.fetching = false;
+        state.userEvents.loadMore.error = "Something went wrong!";
+        break;
       }
   }
 
