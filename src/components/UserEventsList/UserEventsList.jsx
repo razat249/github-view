@@ -47,7 +47,6 @@ class UserEventsList extends Component {
     }
 
     handleFilterChange(type, event) {
-        console.log("Pupu");
         if (event.target.checked) {
             this.addFilter(type)
             return true
@@ -75,10 +74,8 @@ class UserEventsList extends Component {
                                             <a href={github_base_url + event.repo.name} target="_"> {event.repo.name}</a></b>
                                       </p>);
                     eventData.data = event.payload.commits.map(function (commit) {
-                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } <b>-- commited by </b>
-                                    <a href={github_base_url + commit.author.name} target="_">
-                                        {commit.author.name}
-                                    </a>
+                        return <p key={commit.sha}><strong>{commit.sha.slice(0,5)}</strong> - { commit.message } 
+                                    <b> -- commited by <span className="text-info">{commit.author.name}</span></b>
                                </p>
                     });
                     eventData.iconColor = "lightgreen";
@@ -166,7 +163,7 @@ class UserEventsList extends Component {
                 }
             }
             return (
-                <TimelineEvent key={eventData.id}
+                <TimelineEvent key={event.id}
                     title={eventData.title}
                     createdAt={eventData.dateTime}
                     icon={eventData.icon}

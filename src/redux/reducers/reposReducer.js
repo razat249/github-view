@@ -1,5 +1,5 @@
 export default function reducer(state={
-    data: {},
+    data: [],
     fetching: false,
     fetched: false,
     error: null,    
@@ -22,6 +22,16 @@ export default function reducer(state={
       state.fetched = false;
       state.fetching = false;
       break;
+    }
+    case "SELECT_REPO": {
+      state = {...state}
+      state.data.forEach(function(repo) {
+        if (action.payload === repo.id) {
+          repo.selected = true;
+        } else {
+          repo.selected = false;
+        }
+      });
     }
   }
   

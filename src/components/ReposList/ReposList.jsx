@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {Icon} from 'react-fa';
 
 import { fetchRepoEvents } from '../../redux/actions/singleUserActions';
+import { selectRepo } from '../../redux/actions/reposActions';
 import './ReposList.css';
 
 class ReposList extends Component {
@@ -12,18 +13,19 @@ class ReposList extends Component {
     this.selectRepo = this.selectRepo.bind(this);
   }
 
-  selectRepo(username, repo) {
-    this.props.dispatch(fetchRepoEvents(username, repo));
+  selectRepo(repo) {
+    this.props.dispatch(fetchRepoEvents(repo.owner.login, repo.name));
+    this.props.dispatch(selectRepo(repo.id));
   }
 
   render() {
     const repos = this.props.repos;
     if (repos.data[0]) {
       const self = this;
-      var reposList = repos.data.map(function(repo){
-        return (<a key={repo.id} href="#" onClick={ e => self.selectRepo(repo.owner.login, repo.name) } className="list-group-item">
-                  {repo.name}
-                  <span className="text-color-white badge">{repo.stargazers_count} <Icon name="star"/></span>
+      var reposList = repos.data.map(repo => {
+        let selected = repo.selected ? "active" : "";
+        return (<a key={repo.id} href="#" onClick={ e => self.selectRepo(repo) } className={"list-group-item " + selected}>
+                  <div>{repo.name} - <span> {repo.stargazers_count} <Icon name="star"/></span></div>
                 </a>);
       })
     }
