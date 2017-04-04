@@ -4,7 +4,7 @@ import Timestamp from 'react-timestamp';
 import { Icon } from 'react-fa';
 import { Button, Label } from 'react-bootstrap';
 
-import { fetchUserEvents } from '../../redux/actions/singleUserActions';
+import { loadMoreEvents, fetchUserEvents } from '../../redux/actions/singleUserActions';
 import { unSelectRepo } from '../../redux/actions/reposActions';
 import './UserEventsList.css';
 
@@ -178,9 +178,13 @@ class UserEventsList extends Component {
     }
 
     removeRepo() {
-        console.log("asdhjlkasdhjkahkdkahs");
         this.props.dispatch(unSelectRepo());
         this.props.dispatch(fetchUserEvents(this.props.username));
+    }
+
+    loadMore() {
+        console.log("asdhjlkasdhjkahkdkahs");
+        this.props.dispatch(loadMoreEvents(this.props.username, this.props.selectedRepo.name, this.props.user.userEvents.pageNumberToLoad+1));
     }
 
     render() {
@@ -230,6 +234,7 @@ class UserEventsList extends Component {
                 <Timeline>
                     { userEvents.fetching ? <h5>Loading...</h5> : this.generateTimeline(userEvents.data) }
                 </Timeline>
+                <Button onClick={e => this.loadMore()}>Load More..</Button>
             </div>
         );
     }
