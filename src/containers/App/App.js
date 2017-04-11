@@ -18,7 +18,7 @@ class App extends Component {
         {/*main app start*/}
         <div>
           <header className="text-center main-header">
-            <h5 className="text-color-white"><b>GITHUB VIEW</b><small className="text-color-white"> v0.1.1</small></h5>
+            <h5 className="text-color-white"><b>GITHUB VIEW</b><small className="text-color-white"> v0.2.7</small></h5>
           </header>
 
           <section className="row App">
