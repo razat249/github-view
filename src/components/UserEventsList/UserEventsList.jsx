@@ -6,6 +6,7 @@ import { Button, Label } from 'react-bootstrap';
 
 import { loadMoreEvents, fetchUserEvents } from '../../redux/actions/singleUserActions';
 import { unSelectRepo } from '../../redux/actions/reposActions';
+import LoadMoreActivities from '../LoadMoreActivities/LoadMoreActivities';
 import './UserEventsList.css';
 
 class UserEventsList extends Component {
@@ -182,10 +183,6 @@ class UserEventsList extends Component {
         this.props.dispatch(fetchUserEvents(this.props.username));
     }
 
-    loadMore() {
-        this.props.dispatch(loadMoreEvents(this.props.username, this.props.selectedRepo.name, this.props.user.userEvents.loadMore.pageNumberToLoad+1));
-    }
-
     render() {
         let userEvents = {
             data: [],
@@ -240,7 +237,7 @@ class UserEventsList extends Component {
                             <Icon spin name="circle-o-notch" />
                             <b> Loading...</b>
                         </h4> :
-                        <Button bsStyle="primary" onClick={e => this.loadMore()}>Load More</Button>
+                        <LoadMoreActivities />
                     }
                 </div>
             </div>

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Chart } from 'react-google-charts';
 
 // import './PieChart.css';
-import { Chart } from 'react-google-charts';
+import LoadMoreActivities from '../LoadMoreActivities/LoadMoreActivities';
 
 class PieChart extends Component {
     constructor(props) {
@@ -61,7 +62,9 @@ class PieChart extends Component {
 
         return (
             <div>
-                <h5 className="lightslategray-color"><b>Showing Chart for past { length } activities</b></h5>    
+                <h5 className="lightslategray-color"><b>Showing Chart for past { length } activities - </b>
+                    <LoadMoreActivities />
+                </h5>    
                 <Chart
                     chartType="PieChart"
                     data={chartData}
