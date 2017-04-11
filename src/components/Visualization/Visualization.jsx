@@ -3,6 +3,7 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import './Visualization.css';
+import PieChart from '../PieChart/PieChart'
 
 class Visualization extends Component {
   constructor(props) {
@@ -10,14 +11,18 @@ class Visualization extends Component {
   }
 
   render() {
+    console.log(this.props.activities);
     return (
       <div>
         <br />
-        <div className="alert alert-warning">This page will not work right now. (Under Development)</div>
+        {/*<div className="alert alert-warning">This page will not work right now. (Under Development)</div>
         <div className="text-center">
-          <h5 className="lightslategray-color"><b>Calendar Heatmap</b></h5>            
-        </div>
-        <section>
+          <h5 className="lightslategray-color"><b>Pie Chart</b></h5>            
+        </div>*/}
+        <section className="pie-chart">
+          <PieChart activities={ this.props.activities }></PieChart>
+        </section>
+        {/*<section>
           <div className="inline-block">
             <DropdownButton title="Choose Visualization" id="visual">
               <MenuItem eventKey="1" active>Calendar heatmap</MenuItem>
@@ -75,7 +80,7 @@ class Visualization extends Component {
               <h4 className="list-group-item-heading">Branched react-redux-boilerplate from github/view </h4>
             </a>
           </div>
-        </section>
+        </section>*/}
       </div>
     );
   }
