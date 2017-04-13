@@ -10,7 +10,7 @@
 ## Demo
 The site is running here: [https://razat249.github.io/github-view](https://razat249.github.io/github-view)
 
-### Screenshot
+### Screenshots
 
 **Timeline**
 ![image](https://cloud.githubusercontent.com/assets/10090911/24997925/04308c94-2056-11e7-92fb-d66f5e15fb90.png)
