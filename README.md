@@ -10,8 +10,14 @@
 ## Demo
 The site is running here: [https://razat249.github.io/github-view](https://razat249.github.io/github-view)
 
-**Screenshot**
-![Main page](https://cloud.githubusercontent.com/assets/10090911/24558144/c9277fc0-1657-11e7-9027-dcf48e44a1d2.png)
+### Screenshot
+
+**Timeline**
+![image](https://cloud.githubusercontent.com/assets/10090911/24997925/04308c94-2056-11e7-92fb-d66f5e15fb90.png)
+
+**Visualization**
+![image](https://cloud.githubusercontent.com/assets/10090911/24997960/1fccfe60-2056-11e7-99c2-f462a8ccbb57.png)
+
 
 ## contributing
 This is a react-redux app. Follow below steps for building the project.
