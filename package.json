@@ -16,7 +16,7 @@
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
     "react-event-timeline": "^1.2.2",
-    "react-fa": "^4.1.2",
+    "react-fa": "^5.0.0",
     "react-google-charts": "^1.5.4-alpha.1",
     "react-marked": "^0.3.1",
     "react-redux": "^5.0.3",
