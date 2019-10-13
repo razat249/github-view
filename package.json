@@ -12,7 +12,7 @@
     "axios": "^0.15.3",
     "bootstrap": "^3.3.7",
     "react": "^15.4.2",
-    "react-bootstrap": "^0.30.8",
+    "react-bootstrap": "^0.32.4",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
     "react-event-timeline": "^1.2.2",
