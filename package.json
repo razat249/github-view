@@ -20,7 +20,7 @@
     "react-google-charts": "^1.5.4-alpha.1",
     "react-marked": "^0.3.1",
     "react-redux": "^5.0.3",
-    "react-timestamp": "^3.4.0",
+    "react-timestamp": "^5.1.0",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-promise-middleware": "^4.2.0",
