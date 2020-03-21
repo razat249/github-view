@@ -4,26 +4,26 @@
   "private": true,
   "homepage": "https://razat249.github.io/github-view",
   "devDependencies": {
-    "gh-pages": "^0.12.0",
+    "gh-pages": "^2.1.1",
     "redux-logger": "^3.0.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "3.2.0"
   },
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.19.0",
     "bootstrap": "^3.3.7",
-    "react": "^15.4.2",
-    "react-bootstrap": "^0.30.8",
+    "react": "^16.12.0",
+    "react-bootstrap": "^0.32.4",
     "react-calendar-heatmap": "^1.1.0",
     "react-dom": "^15.4.2",
     "react-event-timeline": "^1.2.2",
-    "react-fa": "^4.1.2",
-    "react-google-charts": "^1.5.4-alpha.1",
+    "react-fa": "^5.0.0",
+    "react-google-charts": "^2.0.29",
     "react-marked": "^0.3.1",
     "react-redux": "^5.0.3",
-    "react-timestamp": "^3.4.0",
+    "react-timestamp": "^5.1.0",
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.0",
-    "redux-promise-middleware": "^4.2.0",
+    "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
