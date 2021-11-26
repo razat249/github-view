@@ -5,6 +5,7 @@ export default function reducer(state = {
     fetched: false,
     error: null,
   },
+  
   userEvents: {
     loadMore: {
       pageNumberToLoad: 1,
