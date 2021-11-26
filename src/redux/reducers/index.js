@@ -11,3 +11,4 @@ export default combineReducers({
     singleUser,
     // other,
 })
+
